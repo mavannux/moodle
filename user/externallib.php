@@ -682,7 +682,7 @@ class core_user_external extends external_api {
                 $validuser = true;
 
                 foreach ($params['criteria'] as $criteria) {
-                    if (empty($userdetails[$criteria['key']])) {
+                    if (!property_exists($user, $criteria['key']) and empty($userdetails[$criteria['key']])) {
                         $validuser = false;
                     }
                 }
